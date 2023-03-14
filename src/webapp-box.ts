@@ -1,3 +1,4 @@
+import {$, IReactWrap} from 'alins';
 import {Box} from './ui/box';
 
 /*
@@ -6,13 +7,18 @@ import {Box} from './ui/box';
  * @Description: Coding something
  */
 export class WEBox {
+
+    pages: IReactWrap<{
+        title?: string;
+    }>[];
     
     constructor () {
-        Box().mount();
+        this.pages = $([{title: ''}, {title: ''}]);
+        Box(this.pages).mount();
     }
 
-    add () {
-
+    add (title: string) {
+        this.pages.push({title});
     }
     close () {
 

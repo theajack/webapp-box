@@ -6,4 +6,4 @@
 
 import {WEBox} from '../../src/index';
 
-new WEBox();
+(window as any).wb = new WEBox();
