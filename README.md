@@ -3,20 +3,36 @@
  * @Date: 2022-08-03 21:24:33
  * @Description: Coding something
 -->
-## ebuild-template-rollup
+## [webapp-box](https://github.com/theajack/webapp-box)
 
-[ebuild-cli](https://github.com/theajack/ebuild-template-rollup)
+Web Application Container
+
+[Online examples](https://theajack.github.io/jsbox?github=theajack.webapp-box)
 
 ## quickstart
 
 ```
-npm i -g pnpm lerna
+npm i webapp-box
 ```
 
-```
-pnpm i
+```js
+import { WebappBox } from "webapp-box";
 
-pnpm run dev
+const box = new WebappBox();
 
-pnpm run publish -- x.x.x
+// add dom
+let index = 0;
+function createDiv() {
+    let div = document.createElement('div');
+    div.innerText = ++index;
+    return div
+}
+
+box.add(createDiv());
+setTimeout(() => {
+    box.add(createDiv()); // add another
+}, 1000);
+
+// return container
+const container = await box.add();
 ```

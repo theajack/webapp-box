@@ -7,6 +7,7 @@
 const {
     copyFile, buildPackageJson, writeJsonIntoFile,
     writeFile,
+    resolveRootPath,
 } = require('../utils');
 const pkg = require('../../package.json');
 const {build, builddts} = require('../rollup.base');
@@ -20,6 +21,15 @@ async function main () {
 
     writeFile('@src/version.ts', `export default '${pkg.version}';`);
     await build();
+    await build({
+        format: 'iife',
+        output: resolveRootPath('npm/webapp-box.iife.js'),
+        external: {},
+    });
+    await build({
+        format: 'esm',
+        output: resolveRootPath('npm/webapp-box.esm.js'),
+    });
     await builddts();
     buildPackageJson();
     copyFiles();

@@ -1,13 +1,14 @@
 {
     "name": "webapp-box",
-    "version": "0.0.1",
-    "description": "ebuild-demo",
+    "version": "0.0.2",
+    "description": "webapp-box",
     "repository": "git@github.com:theajack/webapp-box.git",
     "author": "tackchen <theajack@qq.com>",
-    "main": "ebuild-demo.min.js",
-    "unpkg": "ebuild-demo.min.js",
-    "jsdelivr": "ebuild-demo.min.js",
-    "typings": "ebuild-demo.min.d.ts",
+    "main": "webapp-box.min.js",
+    "module": "webapp-box.esm.js",
+    "unpkg": "webapp-box.iife.js",
+    "jsdelivr": "webapp-box.iife.js",
+    "typings": "webapp-box.min.d.ts",
     "scripts": {
         "lint": "eslint src --ext ts",
         "dev": "node scripts/dev/dev.js",
@@ -48,6 +49,7 @@
         "rollup-plugin-uglify": "^6.0.4",
         "serve": "^13.0.2",
         "single-line-log": "^1.1.2",
+        "tslib": "^2.5.0",
         "typescript": "^4.7.4"
     },
     "publishConfig": {

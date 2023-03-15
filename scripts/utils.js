@@ -73,7 +73,7 @@ function buildPackageJson (extract = {}) {
     const attrs = [
         'name', 'version', 'description', 'main', 'unpkg', 'jsdelivr', 'typings',
         'repository', 'keywords', 'author', 'license', 'bugs', 'homepage',
-        'dependencies'
+        'dependencies', 'module'
     ];
 
     const npmPkg = {};
