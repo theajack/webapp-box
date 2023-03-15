@@ -4,6 +4,6 @@
  * @Description: Coding something
  */
 
-import {WEBox} from '../../src/index';
+import WEBox from '../../src/index';
 
-(window as any).wb = new WEBox();
+(window as any).wb = WEBox;

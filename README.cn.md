@@ -16,9 +16,7 @@ npm i webapp-box
 ```
 
 ```js
-import { WebappBox } from "webapp-box";
-
-const box = new WebappBox();
+import WebappBox from "webapp-box";
 
 // add dom
 let index = 0;
@@ -28,11 +26,11 @@ function createDiv() {
     return div
 }
 
-box.add(createDiv());
+WebappBox.add(createDiv());
 setTimeout(() => {
-    box.add(createDiv()); // add another
+    WebappBox.add(createDiv()); // add another
 }, 1000);
 
 // return container
-const container = await box.add();
+const container = await WebappBox.add();
 ```

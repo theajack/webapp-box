@@ -9,6 +9,8 @@ import {addPageDom, clearPageDom, ContentDoms} from './ui/page';
  */
 export class WebappBox {
 
+    static instance: WebappBox;
+
     private _pages: IReactWrap<{
         title?: string;
     }>[] = $([]);
@@ -18,6 +20,7 @@ export class WebappBox {
     private _show: IReactWrap<boolean> = $(false);
     
     constructor () {
+        if (WebappBox.instance) return WebappBox.instance;
         Box({
             show: this._show,
             visible: this._visible,
@@ -26,6 +29,7 @@ export class WebappBox {
             back: () => {this.back();},
             close: () => {this.close();}
         }).mount();
+        WebappBox.instance = this;
     }
 
     private _setShow (bool = true) {

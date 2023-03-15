@@ -8,20 +8,19 @@ window.jsboxCode = {
     lang: 'html',
     code: /* html */`<button onclick="addNewBox()">addNewBox</button>
 <script>
-    const box = new WebappBox();
     let index = 0;
     function createDiv() {
         let div = document.createElement('div');
         div.innerText = 'currentPageIndex = ' + (++index) + '; ';
         const button = document.createElement('button');
         button.innerText = 'addNewBox';
-        button.onclick = ()=>{box.add(createDiv())};
+        button.onclick = () => {WebappBox.add(createDiv())};
         div.appendChild(button)
         return div;
     }
     function addNewBox(){
         index = 0;
-        box.add(createDiv());
+        WebappBox.add(createDiv());
     }
 </script>`
 };
