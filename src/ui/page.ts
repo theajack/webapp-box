@@ -1,4 +1,4 @@
-import {div, span} from 'alins';
+import {$, div, IComponentOptions, span} from 'alins';
 import {style} from 'alins-style';
 
 /*
@@ -6,16 +6,17 @@ import {style} from 'alins-style';
  * @Date: 2023-03-13 09:03:47
  * @Description: Coding something
  */
-export function Page () {
+export function Page ({props}: IComponentOptions) {
+    console.log(props);
     return div(
         '.box-page',
         style({
-            height: '50%',
-            width: '60%',
-            border: '1px solid #aaa',
+            height: '100%',
+            width: '100%',
+            position: 'absolute',
+            display: 'inline-block',
+            left: $`${() => props.index.value * 100}%`
         }),
-        span('.box-back', 'back'),
-        span('.box-close', 'x'),
         div('.box-content')
     );
 }

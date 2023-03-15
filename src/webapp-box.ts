@@ -13,7 +13,7 @@ export class WEBox {
     }>[];
     
     constructor () {
-        this.pages = $([{title: ''}, {title: ''}]);
+        this.pages = $([{title: '标题1'}, {title: '标题2'}]);
         Box(this.pages).mount();
     }
 
