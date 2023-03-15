@@ -88,6 +88,7 @@ export function Box ({
             display: () => show.value ? 'block' : 'none',
             transition: 'opacity .3s ease',
             opacity: () => visible.value ? 1 : 0,
+            zIndex: 10000,
         }),
         div(
             '.box-container',
@@ -106,7 +107,7 @@ export function Box ({
         div('.box-control',
             style({
                 position: 'absolute',
-                fontSize: '18px',
+                fontSize: '20px',
                 textAlign: 'center',
                 right: () => isMin.value ? 0 : 500,
                 bottom: () => isMin.value ? '80%' : 'auto',
