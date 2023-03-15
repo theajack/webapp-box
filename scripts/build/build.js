@@ -22,6 +22,7 @@ async function main () {
     writeFile('@src/version.ts', `export default '${pkg.version}';`);
     await build();
     await build({
+        input: resolveRootPath('src/iife.ts'),
         format: 'iife',
         output: resolveRootPath('npm/webapp-box.iife.js'),
         external: {},

@@ -12,9 +12,9 @@ window.jsboxCode = {
     let index = 0;
     function createDiv() {
         let div = document.createElement('div');
-        div.innerText = ++index;
+        div.innerText = 'currentPageIndex = ' + (++index) + '; ';
         const button = document.createElement('button');
-        button.innerText = addNewBox;
+        button.innerText = 'addNewBox';
         button.onclick = ()=>{box.add(createDiv())};
         div.appendChild(button)
         return div;
