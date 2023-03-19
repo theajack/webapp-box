@@ -11,7 +11,8 @@ async function main () {
     console.log(`Start build version=${version}`);
     await exec(`npm run build ${version}`);
     console.log(`Build success, publishing...`);
-    await exec(`npm publish npm`);
+    await exec(`cd npm`);
+    await exec(`npm publish`);
     console.log(`Publish success`);
 }
 
