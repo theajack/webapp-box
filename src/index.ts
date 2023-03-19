@@ -5,4 +5,4 @@
  */
 
 import {WebappBox} from './webapp-box';
-export default new WebappBox();
+export default WebappBox;

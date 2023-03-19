@@ -1,6 +1,6 @@
 {
     "name": "webapp-box",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "webapp-box",
     "repository": "git@github.com:theajack/webapp-box.git",
     "author": "tackchen <theajack@qq.com>",
@@ -15,8 +15,7 @@
         "build": "node scripts/build/build.js",
         "dev:docs": "node scripts/docs/dev.js",
         "build:docs": "node scripts/docs/build.js",
-        "purge": "node scripts/purge-cdn.js",
-        "release": "node scripts/push-release.js"
+        "release": "node scripts/release.js"
     },
     "keywords": [],
     "license": "MIT",

@@ -6,6 +6,7 @@
 
 import {$, click, comp, div, IReactWrap, prop} from 'alins';
 import {css, style} from 'alins-style';
+import {back, getStore, close} from '../store/store';
 import {Page} from './page';
 
 function isMinScreen () {
@@ -25,12 +26,14 @@ css('.box-mask')(
                 cursor: pointer;
                 font-weight: bold;
                 box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+                transition: background-color .3s ease;
             `),
         ],
-        ['.box-back', style({
-        })],
-        ['.box-close', style({
-        })],
+        ['.box-back:hover,.box-close:hover',
+            style(`
+                background-color: #ffff;
+            `),
+        ],
     ],
     ['.box-content',
         style({
@@ -58,16 +61,11 @@ css('.box-mask')(
     ],
 ).mount();
 
-export function Box ({
-    back, close, pages, pageIndex, visible, show
-}: {
-    show: IReactWrap<boolean>,
-    visible: IReactWrap<boolean>,
-    pages: IReactWrap<{ title?: string;}>[],
-    pageIndex: IReactWrap<number>,
-    back: ()=>void,
-    close: ()=>void,
-}) {
+export function Box () {
+    const {
+        pageIndex, show, visible, pages, clickMaskClose,
+        width, height,
+    } = getStore();
     const isMin: IReactWrap<boolean> = $(isMinScreen());
     window.addEventListener('resize', () => {
         isMin.value = isMinScreen();
@@ -75,8 +73,8 @@ export function Box ({
 
     const containerStyle = style({
         position: 'absolute',
-        width: () => isMin.value ? '100%' : '500px',
-        height: () => isMin.value ? '80%' : '100%',
+        width: () => isMin.value ? '100%' : width.value,
+        height: () => isMin.value ? height.value : '100%',
         right: 0,
         left: () => isMin.value ? 0 : 'auto',
         bottom: () => isMin.value ? 0 : 'auto',
@@ -95,8 +93,10 @@ export function Box ({
         transition: 'transform .3s ease',
     });
 
-    return div(
-        '.box-mask',
+    return div('.box-mask',
+        click(() => {
+            if (clickMaskClose.value) close();
+        }),
         style({
             boxSizing: 'border-box',
             position: 'fixed',
@@ -110,11 +110,10 @@ export function Box ({
             opacity: () => visible.value ? 1 : 0,
             zIndex: 10000,
         }),
-        div(
-            '.box-container',
+        div('.box-container',
+            click.stop,
             containerStyle,
-            div(
-                '.box-bar',
+            div('.box-bar',
                 barStyle,
                 comp(Page).for(pages)((item, index) => [
                     prop({
@@ -125,18 +124,22 @@ export function Box ({
             ),
         ),
         div('.box-control',
+            click.stop,
             style({
                 position: 'absolute',
-                fontSize: '20px',
+                fontSize: 25,
+                lineHeight: 25,
                 textAlign: 'center',
-                right: () => isMin.value ? 0 : 500,
-                bottom: () => isMin.value ? '80%' : 'auto',
+                userSelect: 'none',
+                right: () => isMin.value ? 0 : width.value,
+                bottom: () => isMin.value ? height.value : 'auto',
             }),
-            div('.box-back', click(back), style({
+            div.show(() => pages.length > 1)('.box-back', click(back), style({
                 position: () => isMin.value ? 'fixed' : 'relative',
                 left: 0,
+                color: '#333',
             }), '<'),
-            div('.box-close', click(close), style.color('#e44'), '×'),
+            div('.box-close', click(close), style.color('#d00'), '×'),
         ),
     );
 }
