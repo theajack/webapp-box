@@ -32,10 +32,30 @@ css('.box-mask')(
         ['.box-close', style({
         })],
     ],
-    ['.box-content', style({
-        height: '100%',
-        overflowY: 'auto',
-    })],
+    ['.box-content',
+        style({
+            height: '100%',
+            overflowY: 'auto',
+        }),
+        [ '&::-webkit-scrollbar', style({
+            width: 5,
+            cursor: 'pointer',
+            height: 5,
+        }) ],
+        [ '&::-webkit-scrollbar-button', style({
+            display: 'none',
+        }) ],
+        [ '&::-webkit-scrollbar-track', style({
+            display: 'none',
+        }) ],
+        [ '&::-webkit-scrollbar-thumb', style({
+            backgroundColor: 'hsla(0,0%,53.3%,.4)',
+            cursor: 'pointer'
+        }) ],
+        [ '&::-webkit-scrollbar-track-piece', style({
+            backgroundColor: 'hsla(0,0%,53.3%,.06666666666666667)'
+        }) ]
+    ],
 ).mount();
 
 export function Box ({

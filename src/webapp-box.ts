@@ -1,6 +1,7 @@
 import {$, IReactWrap, value} from 'alins';
 import {Box} from './ui/box';
 import {addPageDom, clearPageDom, ContentDoms} from './ui/page';
+import version from './version';
 
 /*
  * @Author: chenzhongsheng
@@ -10,6 +11,8 @@ import {addPageDom, clearPageDom, ContentDoms} from './ui/page';
 export class WebappBox {
 
     static instance: WebappBox;
+
+    version = version;
 
     private _pages: IReactWrap<{
         title?: string;
@@ -68,6 +71,9 @@ export class WebappBox {
             this.close();
         } else {
             this._pageIndex.value --;
+            setTimeout(() => {
+                this._pages.splice(this._pages.length - 1, 1);
+            }, 300);
         }
     }
 }
