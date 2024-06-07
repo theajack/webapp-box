@@ -4,6 +4,10 @@
  * @Description: Coding something
 -->
 
+## 0.0.8
+
+1. 优化关闭和返回按钮的图标
+
 ## 0.0.6
 
 1. 配置点击mask可关闭

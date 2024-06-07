@@ -1,7 +1,7 @@
 {
     "name": "webapp-box",
-    "version": "0.0.7",
-    "description": "webapp-box",
+    "version": "0.0.8",
+    "description": "Web Application Container",
     "repository": "git@github.com:theajack/webapp-box.git",
     "author": "tackchen <theajack@qq.com>",
     "main": "webapp-box.min.js",

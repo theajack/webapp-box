@@ -4,7 +4,7 @@
  * @Description: Coding something
  */
 
-import {$, click, comp, div, IReactWrap, prop} from 'alins';
+import {$, click, comp, div, html, IReactWrap, prop} from 'alins';
 import {css, style} from 'alins-style';
 import {back, getStore, close} from '../store/store';
 import {Page} from './page';
@@ -18,20 +18,15 @@ css('.box-mask')(
     ['.box-control',
         ['.box-back,.box-close',
             style(`
-                width: 30px;
-                height: 30px;
-                margin: 5px;
-                background-color: #fff5;
-                border-radius: 5px;
-                cursor: pointer;
-                font-weight: bold;
-                box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-                transition: background-color .3s ease;
-            `),
-        ],
-        ['.box-back:hover,.box-close:hover',
-            style(`
-                background-color: #ffff;
+width: 24px;
+height: 24px;
+margin: 5px;
+cursor: pointer;
+transition: background-color .3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+-webkit-tap-highlight-color:transparent;
             `),
         ],
     ],
@@ -138,8 +133,8 @@ export function Box () {
                 position: () => isMin.value ? 'fixed' : 'relative',
                 left: 0,
                 color: '#333',
-            }), '<'),
-            div('.box-close', click(close), style.color('#d00'), '×'),
+            }), html('<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" fill="none" stroke="#666666" stroke-width="3" stroke-linejoin="round"/><path d="M27 33L18 24L27 15" stroke="#666666" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round"/></svg>')),
+            div('.box-close', click(close), style.color('#d00'), html('<?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" fill="none" stroke="#dd4444" stroke-width="3" stroke-linejoin="round"/><path d="M29.6567 18.3432L18.343 29.6569" stroke="#dd4444" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round"/><path d="M18.3433 18.3432L29.657 29.6569" stroke="#dd4444" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round"/></svg>')),
         ),
     );
 }
